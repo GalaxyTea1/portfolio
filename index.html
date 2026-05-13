@@ -14,6 +14,9 @@
   <meta name="author" content="Văn Trọng" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://galaxytea1.github.io/Portfolio/" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -22,6 +25,8 @@
   <meta property="og:description"
     content="4+ years of experience in React, TypeScript & modern frontend architecture." />
   <meta property="og:image" content="https://galaxytea1.github.io/Portfolio/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
@@ -39,8 +44,8 @@
     "name": "Văn Trọng",
     "jobTitle": "Frontend Developer",
     "url": "https://galaxytea1.github.io/Portfolio/",
-    "sameAs": ["https://github.com/GalaxyTea1"],
-    "knowsAbout": ["React", "TypeScript", "Next.js", "JavaScript", "Node.js"],
+    "sameAs": ["https://github.com/GalaxyTea1", "https://www.linkedin.com/in/trongdev0311/"],
+    "knowsAbout": ["React", "TypeScript", "JavaScript", "Node.js"],
     "description": "Frontend Developer with 4+ years of experience building modern web applications."
   }
   </script>
@@ -107,6 +112,7 @@
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -284,6 +290,57 @@
       </div>
     </section>
 
+    <!-- Experience -->
+    <section class="experience-section section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Career Focus</span>
+          <h2 class="section-title">Frontend <span class="gradient-text">Experience</span></h2>
+          <p class="section-sub">The work patterns I bring to production teams</p>
+        </div>
+
+        <div class="experience-layout">
+          <article class="experience-card glass-card" data-aos>
+            <div class="experience-meta">
+              <span class="experience-period">4+ years</span>
+              <span class="experience-type">Frontend Development</span>
+            </div>
+            <div class="experience-content">
+              <h3>Building responsive web applications with React and TypeScript</h3>
+              <p>
+                I focus on turning product requirements into clean, maintainable interfaces with reliable API
+                integration, strong component structure, and careful attention to responsive behavior.
+              </p>
+              <ul class="experience-list">
+                <li>Developed reusable UI components and page flows for modern web applications.</li>
+                <li>Integrated REST APIs, authentication flows, form handling, and user-facing state.</li>
+                <li>Worked across frontend architecture, responsive styling, and performance-minded interaction design.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-card glass-card" data-aos>
+            <div class="experience-meta">
+              <span class="experience-period">Product work</span>
+              <span class="experience-type">Fullstack Awareness</span>
+            </div>
+            <div class="experience-content">
+              <h3>Comfortable bridging UI, backend contracts, and user workflows</h3>
+              <p>
+                My portfolio projects cover more than static screens: auth, database-backed features, progress systems,
+                browser extension behavior, and AI-powered utilities.
+              </p>
+              <ul class="experience-list">
+                <li>Built project flows around JWT auth, PostgreSQL data, flashcards, SRS, XP, and streak tracking.</li>
+                <li>Created browser-extension interactions using Chrome APIs and Gemini-powered translation.</li>
+                <li>Designed interfaces to make repeated actions easy to scan, use, and improve over time.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Projects -->
     <section class="projects-section section" id="projects">
       <div class="container">
@@ -322,8 +379,13 @@
             </div>
             <div class="project-body">
               <h3 class="project-title">Learning JP <span class="project-tag tag-purple">SumaryJP</span></h3>
-              <p class="project-desc">Japanese learning platform with spaced repetition (SRS), flashcards, XP tracking,
-                streak system and vocabulary management. Built with React + Node.js backend.</p>
+              <p class="project-desc"><strong>Role:</strong> Built the learning product flow from frontend screens to
+                backend-backed progress features.</p>
+              <ul class="project-highlights">
+                <li>Implemented SRS flashcards, vocabulary management, XP, and streak tracking.</li>
+                <li>Connected React UI with Node.js, PostgreSQL, JWT auth, and REST API flows.</li>
+                <li>Structured the app around repeat learning sessions and measurable user progress.</li>
+              </ul>
               <div class="project-tech">
                 <span class="tech-badge">React</span>
                 <span class="tech-badge">Node.js</span>
@@ -374,8 +436,13 @@
             </div>
             <div class="project-body">
               <h3 class="project-title">EX Translate <span class="project-tag tag-cyan">Extension</span></h3>
-              <p class="project-desc">Chrome extension for instant language translation powered by Google Gemini AI.
-                Translate any selected text on any webpage with a single click.</p>
+              <p class="project-desc"><strong>Role:</strong> Built a browser workflow that turns selected webpage text
+                into an instant translation action.</p>
+              <ul class="project-highlights">
+                <li>Used Chrome Extension APIs to capture user selection and trigger contextual translation.</li>
+                <li>Integrated Google Gemini AI as the translation engine for selected text.</li>
+                <li>Designed a lightweight extension popup focused on speed and minimal friction.</li>
+              </ul>
               <div class="project-tech">
                 <span class="tech-badge">JavaScript</span>
                 <span class="tech-badge">Chrome API</span>
@@ -418,8 +485,13 @@
             </div>
             <div class="project-body">
               <h3 class="project-title">Save Money <span class="project-tag tag-pink">Web App</span></h3>
-              <p class="project-desc">Personal finance tracker web application for managing expenses, budgets, and
-                savings goals with beautiful data visualizations and analytics.</p>
+              <p class="project-desc"><strong>Role:</strong> Built a personal finance interface for tracking spending
+                patterns and making budget data easier to review.</p>
+              <ul class="project-highlights">
+                <li>Created expense, budget, and savings-goal views for everyday finance tracking.</li>
+                <li>Used chart-driven summaries to make trends and categories easier to understand.</li>
+                <li>Focused the UI around quick entry, visual feedback, and repeated personal use.</li>
+              </ul>
               <div class="project-tech">
                 <span class="tech-badge">JavaScript</span>
                 <span class="tech-badge">Charts</span>
@@ -481,6 +553,14 @@
                   </svg>
                   GalaxyTea1
                 </a>
+                <a href="https://www.linkedin.com/in/trongdev0311/" target="_blank" rel="noopener noreferrer"
+                  class="about-link">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.603 0 4.267 2.371 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.554V9h3.565v11.452z" />
+                  </svg>
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>
@@ -526,6 +606,8 @@
         <span class="footer-logo"></span>
         <p class="footer-copy">© 2026 Văn Trọng. All rights reserved.</p>
         <div class="footer-links">
+          <a href="https://github.com/GalaxyTea1" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/trongdev0311/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
     </footer>

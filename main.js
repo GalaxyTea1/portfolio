@@ -241,7 +241,7 @@ function triggerHeroEntrance() {
   document.head.appendChild(activeStyle);
 
   const navItems = document.querySelectorAll('.nav-links a');
-  const navTargets = ['about', 'skills', 'projects', 'contact'];
+  const navTargets = ['about', 'skills', 'experience', 'projects', 'contact'];
 
   function updateActiveNav() {
     const scrollY = window.scrollY;
@@ -319,7 +319,7 @@ function triggerHeroEntrance() {
   // Typing effect on hero role
   const heroRole = document.querySelector('.hero-role');
   if (heroRole) {
-    const words = ['Frontend Developer', 'React Specialist', 'TypeScript Expert', 'UI Craftsman'];
+    const words = ['Frontend Developer', 'UI Craftsman'];
     let wIdx = 0, cIdx = 0, deleting = false;
     function type() {
       const word = words[wIdx];

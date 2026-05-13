@@ -1305,6 +1305,97 @@ code {
 }
 
 /* =========================================
+   EXPERIENCE SECTION
+   ========================================= */
+.experience-section {
+  background: radial-gradient(ellipse at 70% 20%, rgba(124, 114, 255, 0.06) 0%, transparent 62%);
+}
+
+.experience-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.experience-card {
+  padding: 2rem;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.experience-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--outline-subtle);
+}
+
+.experience-period,
+.experience-type {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.experience-period {
+  padding: 6px 12px;
+  color: var(--secondary);
+  background: rgba(78, 205, 196, 0.1);
+  border: 1px solid rgba(78, 205, 196, 0.22);
+}
+
+.experience-type {
+  color: var(--primary-light);
+}
+
+.experience-content h3 {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin-bottom: 0.8rem;
+}
+
+.experience-content p {
+  color: var(--on-surface-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.experience-list,
+.project-highlights {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.experience-list li,
+.project-highlights li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--on-surface-muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.experience-list li::before,
+.project-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--secondary);
+  box-shadow: 0 0 10px rgba(78, 205, 196, 0.45);
+}
+
+/* =========================================
    PROJECTS SECTION
    ========================================= */
 .projects-section {
@@ -1606,13 +1697,19 @@ code {
   font-size: 0.88rem;
   color: var(--on-surface-muted);
   line-height: 1.65;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-desc strong {
+  color: var(--on-surface);
+  font-weight: 700;
 }
 
 .project-tech {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  margin-top: 1rem;
   margin-bottom: 1.25rem;
 }
 
@@ -1923,6 +2020,10 @@ code {
   }
 
   .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-layout {
     grid-template-columns: 1fr;
   }
 
