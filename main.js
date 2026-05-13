@@ -367,17 +367,35 @@ function triggerHeroEntrance() {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const formData = new FormData(form);
+      const name = (formData.get('name') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const message = (formData.get('message') || '').toString().trim();
       const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Sending...';
+      const recipient = 'trongdv.dev@gmail.com';
+      const subject = encodeURIComponent(`Portfolio contact from ${name || 'Visitor'}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+      );
+      const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+      btn.textContent = 'Opening Email...';
       btn.disabled = true;
+
+      window.location.href = mailtoUrl;
+
       setTimeout(() => {
-        form.reset();
         btn.textContent = 'Send Message';
         btn.disabled = false;
         formSuccess.classList.add('show');
         anime({ targets: formSuccess, opacity: [0, 1], translateY: [-8, 0], duration: 400, easing: 'easeOutExpo' });
-        setTimeout(() => formSuccess.classList.remove('show'), 4000);
-      }, 1200);
+        setTimeout(() => formSuccess.classList.remove('show'), 5000);
+      }, 800);
     });
   }
 })();

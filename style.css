@@ -700,7 +700,7 @@ img {
   background: rgba(14, 14, 19, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--outline-subtle);
+  /* border-bottom: 1px solid var(--outline-subtle); */
 }
 
 .nav-container {
