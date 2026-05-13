@@ -365,7 +365,7 @@ function triggerHeroEntrance() {
   const form = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -377,25 +377,42 @@ function triggerHeroEntrance() {
       const email = (formData.get('email') || '').toString().trim();
       const message = (formData.get('message') || '').toString().trim();
       const btn = form.querySelector('button[type="submit"]');
-      const recipient = 'trongdv.dev@gmail.com';
-      const subject = encodeURIComponent(`Portfolio contact from ${name || 'Visitor'}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-      );
-      const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      const originalBtnText = btn.textContent;
+      const endpoint = 'https://formspree.io/f/mgodqzyb';
 
-      btn.textContent = 'Opening Email...';
+      btn.textContent = 'Sending...';
       btn.disabled = true;
+      formSuccess.classList.remove('show');
 
-      window.location.href = mailtoUrl;
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            _subject: `Portfolio contact from ${name || 'Visitor'}`,
+          }),
+        });
 
-      setTimeout(() => {
-        btn.textContent = 'Send Message';
-        btn.disabled = false;
+        if (!response.ok) throw new Error('Form submission failed');
+
+        form.reset();
+        formSuccess.textContent = "Message sent! I'll get back to you soon.";
         formSuccess.classList.add('show');
         anime({ targets: formSuccess, opacity: [0, 1], translateY: [-8, 0], duration: 400, easing: 'easeOutExpo' });
         setTimeout(() => formSuccess.classList.remove('show'), 5000);
-      }, 800);
+      } catch (error) {
+        formSuccess.textContent = 'Message could not be sent. Please email me directly.';
+        formSuccess.classList.add('show');
+      } finally {
+        btn.textContent = originalBtnText;
+        btn.disabled = false;
+      }
     });
   }
 })();
