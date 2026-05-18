@@ -352,7 +352,9 @@ function triggerHeroEntrance() {
       const rect = card.getBoundingClientRect();
       const rx = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -8;
       const ry = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 8;
-      card.style.cssText += `transform:perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02,1.02,1.02);transition:transform 0.1s ease-out;z-index:10`;
+      card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02,1.02,1.02)`;
+      card.style.transition = 'transform 0.1s ease-out';
+      card.style.zIndex = '10';
     });
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)';
@@ -415,4 +417,43 @@ function triggerHeroEntrance() {
       }
     });
   }
+
+  // Project screenshot lightbox
+  const lightbox = document.getElementById('projectLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const shotTriggers = document.querySelectorAll('[data-lightbox-src]');
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lightboxImg) {
+      lightboxImg.src = '';
+      lightboxImg.alt = '';
+    }
+  }
+
+  shotTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      if (!lightbox || !lightboxImg) return;
+      const src = trigger.getAttribute('data-lightbox-src');
+      const title = trigger.getAttribute('data-lightbox-title') || 'Project screenshot';
+      lightboxImg.src = src;
+      lightboxImg.alt = title;
+      if (lightboxTitle) lightboxTitle.textContent = title;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.querySelectorAll('[data-lightbox-close]').forEach(btn => {
+    btn.addEventListener('click', closeLightbox);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) closeLightbox();
+  });
 })();

@@ -1416,6 +1416,10 @@ code {
   transition: var(--transition);
   opacity: 0;
   transform: translateY(24px);
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  transform-style: preserve-3d;
 }
 
 .project-card.visible {
@@ -1435,10 +1439,13 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  clip-path: inset(0 round var(--radius-xl) var(--radius-xl) 0 0);
+  isolation: isolate;
 }
 
 .project-img-1 {
-  background: linear-gradient(135deg, rgba(124, 114, 255, 0.15) 0%, rgba(78, 205, 196, 0.1) 100%);
+  background: #f6f8fc;
 }
 
 .project-img-2 {
@@ -1467,6 +1474,73 @@ code {
   border-radius: 50px;
   padding: 4px 10px;
   backdrop-filter: blur(8px);
+}
+
+.project-screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  backface-visibility: hidden;
+}
+
+.project-shot-trigger {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  color: inherit;
+  cursor: zoom-in;
+  backface-visibility: hidden;
+}
+
+.project-screenshot-main {
+  object-position: center top;
+  transform: scale(1.02);
+  transition: transform 0.55s ease, filter 0.55s ease;
+  will-change: transform;
+}
+
+.project-card:hover .project-screenshot-main {
+  transform: scale(1.06);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.project-screenshot-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(14, 14, 19, 0.02) 0%, rgba(14, 14, 19, 0.42) 100%),
+    linear-gradient(90deg, rgba(124, 114, 255, 0.12), transparent 48%);
+  pointer-events: none;
+}
+
+.project-shot-label {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 4;
+  display: grid;
+  gap: 2px;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(14, 14, 19, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.project-shot-label span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+}
+
+.project-shot-label strong {
+  font-size: 0.82rem;
+  color: #fff;
 }
 
 /* Project mockups – abstract UI art */
@@ -1655,6 +1729,9 @@ code {
 /* Project body */
 .project-body {
   padding: 1.5rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .project-title {
@@ -1705,12 +1782,131 @@ code {
   font-weight: 700;
 }
 
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.project-gallery figure {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--outline-subtle);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid var(--outline-subtle);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.project-gallery figure:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.05);
+}
+
+.project-gallery figcaption {
+  padding: 6px 7px;
+  color: var(--on-surface-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* =========================================
+   SCREENSHOT LIGHTBOX
+   ========================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10020;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 9, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.lightbox-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 94vw);
+  max-height: 90vh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: rgba(19, 19, 25, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.62);
+}
+
+.lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--outline-subtle);
+}
+
+.lightbox-title {
+  color: var(--on-surface);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.lightbox-close {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--on-surface-muted);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--outline-subtle);
+  transition: var(--transition);
+}
+
+.lightbox-close:hover {
+  color: var(--on-surface);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-img {
+  width: 100%;
+  max-height: calc(90vh - 68px);
+  object-fit: contain;
+  display: block;
+  background: #f6f8fc;
+}
+
 .project-tech {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 1rem;
+  margin-top: auto;
   margin-bottom: 1.25rem;
+  padding-top: 1.25rem;
 }
 
 .tech-badge {

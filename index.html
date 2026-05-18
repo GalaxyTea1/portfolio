@@ -356,25 +356,15 @@
               <div class="project-img-overlay">
                 <span class="project-category">Fullstack Web App</span>
               </div>
-              <div class="project-mockup pm-1">
-                <div class="pm-bar">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="pm-content">
-                  <div class="pm-row pm-header"></div>
-                  <div class="pm-body">
-                    <div class="pm-sidebar">
-                      <div class="pm-item"></div>
-                      <div class="pm-item"></div>
-                      <div class="pm-item active"></div>
-                      <div class="pm-item"></div>
-                    </div>
-                    <div class="pm-main">
-                      <div class="pm-card"></div>
-                      <div class="pm-card pm-card-wide"></div>
-                    </div>
-                  </div>
-                </div>
+              <button class="project-shot-trigger" type="button" data-lightbox-src="assets/sumaryjp-word-modal.png"
+                data-lightbox-title="SumaryJP word detail modal" aria-label="View SumaryJP word detail screenshot">
+                <img src="assets/sumaryjp-word-modal.png" alt="SumaryJP vocabulary detail modal"
+                  class="project-screenshot project-screenshot-main" loading="lazy" />
+              </button>
+              <div class="project-screenshot-shade"></div>
+              <div class="project-shot-label">
+                <span>Word detail</span>
+                <strong>Vocabulary context</strong>
               </div>
             </div>
             <div class="project-body">
@@ -386,6 +376,30 @@
                 <li>Connected React UI with Node.js, PostgreSQL, JWT auth, and REST API flows.</li>
                 <li>Structured the app around repeat learning sessions and measurable user progress.</li>
               </ul>
+              <div class="project-gallery" aria-label="SumaryJP feature screenshots">
+                <figure>
+                  <button class="project-shot-trigger" type="button" data-lightbox-src="assets/sumaryjp-dashboard.png"
+                    data-lightbox-title="SumaryJP dashboard vocabulary management">
+                    <img src="assets/sumaryjp-dashboard.png" alt="SumaryJP dashboard vocabulary management screen"
+                      loading="lazy" />
+                  </button>
+                  <figcaption>Dashboard</figcaption>
+                </figure>
+                <figure>
+                  <button class="project-shot-trigger" type="button" data-lightbox-src="assets/sumaryjp-quiz.png"
+                    data-lightbox-title="SumaryJP vocabulary quiz mode">
+                    <img src="assets/sumaryjp-quiz.png" alt="SumaryJP vocabulary quiz mode" loading="lazy" />
+                  </button>
+                  <figcaption>Quiz mode</figcaption>
+                </figure>
+                <figure>
+                  <button class="project-shot-trigger" type="button" data-lightbox-src="assets/sumaryjp-flashcard.png"
+                    data-lightbox-title="SumaryJP flashcard review mode">
+                    <img src="assets/sumaryjp-flashcard.png" alt="SumaryJP flashcard review mode" loading="lazy" />
+                  </button>
+                  <figcaption>Flashcards</figcaption>
+                </figure>
+              </div>
               <div class="project-tech">
                 <span class="tech-badge">React</span>
                 <span class="tech-badge">Node.js</span>
@@ -618,6 +632,21 @@
         <polyline points="18 15 12 9 6 15" />
       </svg>
     </button>
+
+    <div class="lightbox" id="projectLightbox" aria-hidden="true">
+      <div class="lightbox-backdrop" data-lightbox-close></div>
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Project screenshot preview">
+        <div class="lightbox-header">
+          <span class="lightbox-title" id="lightboxTitle">Project screenshot</span>
+          <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close screenshot preview">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      </div>
+    </div>
 
   </div><!-- /.site-wrapper -->
 
