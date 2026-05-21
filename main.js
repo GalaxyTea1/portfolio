@@ -347,7 +347,7 @@ function triggerHeroEntrance() {
   }, { passive: true });
 
   // 3D card tilt on hover
-  document.querySelectorAll('.project-card').forEach(card => {
+  document.querySelectorAll('.project-card:not(.featured-project)').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const rx = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -8;

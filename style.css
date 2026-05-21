@@ -1396,6 +1396,62 @@ code {
 }
 
 /* =========================================
+   TECHNICAL HIGHLIGHTS SECTION
+   ========================================= */
+.technical-section {
+  background:
+    radial-gradient(ellipse at 18% 20%, rgba(78, 205, 196, 0.05) 0%, transparent 58%),
+    radial-gradient(ellipse at 80% 80%, rgba(124, 114, 255, 0.05) 0%, transparent 62%);
+}
+
+.technical-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.technical-card {
+  min-height: 220px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(27, 27, 33, 0.72);
+  border: 1px solid var(--outline-subtle);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+.technical-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(78, 205, 196, 0.22);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+}
+
+.technical-kicker {
+  width: fit-content;
+  margin-bottom: 1.4rem;
+  color: var(--secondary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.technical-card h3 {
+  color: var(--on-surface);
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+.technical-card p {
+  color: var(--on-surface-muted);
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+
+/* =========================================
    PROJECTS SECTION
    ========================================= */
 .projects-section {
@@ -1430,6 +1486,27 @@ code {
 .project-card:hover {
   border-color: rgba(124, 114, 255, 0.2);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(124, 114, 255, 0.08);
+}
+
+.featured-project {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+}
+
+.featured-project .project-img {
+  height: 100%;
+  min-height: 520px;
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+  clip-path: inset(0 round var(--radius-xl) 0 0 var(--radius-xl));
+}
+
+.featured-project .project-screenshot-main {
+  object-position: center;
+}
+
+.featured-project .project-body {
+  min-height: 520px;
 }
 
 .project-img {
@@ -1780,6 +1857,38 @@ code {
 .project-desc strong {
   color: var(--on-surface);
   font-weight: 700;
+}
+
+.case-study-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--outline-subtle);
+  border-bottom: 1px solid var(--outline-subtle);
+}
+
+.case-study-item {
+  min-width: 0;
+  padding-left: 0.85rem;
+  border-left: 2px solid rgba(78, 205, 196, 0.34);
+}
+
+.case-study-item span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--primary-light);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.case-study-item p {
+  color: var(--on-surface-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
 }
 
 .project-gallery {
@@ -2223,6 +2332,30 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .technical-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured-project {
+    display: flex;
+    grid-column: auto;
+  }
+
+  .featured-project .project-img {
+    height: 240px;
+    min-height: 0;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    clip-path: inset(0 round var(--radius-xl) var(--radius-xl) 0 0);
+  }
+
+  .featured-project .project-body {
+    min-height: 0;
+  }
+
+  .case-study-strip {
+    grid-template-columns: 1fr;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -2266,6 +2399,10 @@ code {
   }
 
   .stack-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .technical-grid {
     grid-template-columns: 1fr;
   }
 
